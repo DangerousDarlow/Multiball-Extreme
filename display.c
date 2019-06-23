@@ -1,3 +1,5 @@
+int const NUM_DIGITS = 4;
+
 void setDigitValue(int value)
 {
   switch (value)
@@ -104,22 +106,25 @@ void setDigitValue(int value)
   }
 }
 
-int getPositiveOutput(int digitIndexFromLeft)
+void switchOnDigit(int index)
 {
-  switch (digitIndexFromLeft)
-  {
-  case 0:
-    return 11;
+  switchOnOrOffDigit(index, true);
+}
 
-  case 1:
-    return 10;
+void switchOffDigit(int index)
+{
+  switchOnOrOffDigit(index, false);
+}
 
-  case 2:
-    return 9;
+void switchOnOrOffDigit(int index, bool on)
+{
+  if (index < 0)
+    index = 0;
+  else if (index > NUM_DIGITS -1)
+    index = NUM_DIGITS -1;
 
-  case 3:
-    return 8;
-  }
+  const int DIGIT[] = { 11, 10, 9, 8 };
+  digitalWrite(DIGIT[index], on ? HIGH : LOW);
 }
 
 void displayValue(int value)
@@ -127,26 +132,14 @@ void displayValue(int value)
   if (value < 0)
     value = 0;
   else if (value > 9999)
-    value = 9999;
+    value =  9999;
 
-  const int numDigits = 4;
+  uint8_t digits[NUM_DIGITS];
+  memset(digits, 0, NUM_DIGITS);
 
-  if (value == 0)
+  for (int index = 0; index < NUM_DIGITS; ++index)
   {
-    digitalWrite(getPositiveOutput(0), LOW);
-    digitalWrite(getPositiveOutput(1), LOW);
-    digitalWrite(getPositiveOutput(2), LOW);
-    digitalWrite(getPositiveOutput(3), HIGH);
-    setDigitValue(0);
-    return;
-  }
-
-  uint8_t digits[numDigits];
-  memset(digits, 0, numDigits);
-
-  for (int index = 0; index < numDigits; ++index)
-  {
-    const int digitIndexFromLeft = numDigits - index - 1;
+    const int digitIndexFromLeft = NUM_DIGITS - index - 1;
     digits[digitIndexFromLeft] = value % 10;
     if (value < 10)
       break;
@@ -155,17 +148,15 @@ void displayValue(int value)
   }
 
   bool allZero = true;
-  for (int index = 0; index < numDigits; ++index)
+  for (int index = 0; index < NUM_DIGITS; ++index)
   {
     if (digits[index] == 0 && allZero)
-    {
-      digitalWrite(getPositiveOutput(index), LOW);
       continue;
-    }
 
     allZero = false;
 
-    digitalWrite(getPositiveOutput(index), HIGH);
     setDigitValue(digits[index]);
+    switchOnDigit(index);
+    switchOffDigit(index);
   }
 }

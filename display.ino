@@ -11,18 +11,5 @@ void setup()
 
 void loop()
 {
-  displayValue(0);
-  delay(500);
-
-  displayValue(5);
-  delay(500);
-
-  displayValue(11);
-  delay(500);
-
-  displayValue(110);
-  delay(500);
-
-  displayValue(1000);
-  delay(500);
+  displayValue(123);
 }
