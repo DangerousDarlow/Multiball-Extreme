@@ -2,106 +2,108 @@ int const NUM_DIGITS = 4;
 
 void setDigitValue(int value)
 {
+  const int SEGMENT_TO_PIN[] = { 2, 3, 4, 5, 6, 7, 8 };
+
   switch (value)
   {
   case 0:
-    digitalWrite(0, LOW);
-    digitalWrite(1, LOW);
-    digitalWrite(2, LOW);
-    digitalWrite(3, LOW);
-    digitalWrite(4, LOW);
-    digitalWrite(5, LOW);
-    digitalWrite(6, HIGH);
+    digitalWrite(SEGMENT_TO_PIN[0], LOW);
+    digitalWrite(SEGMENT_TO_PIN[1], LOW);
+    digitalWrite(SEGMENT_TO_PIN[2], LOW);
+    digitalWrite(SEGMENT_TO_PIN[3], LOW);
+    digitalWrite(SEGMENT_TO_PIN[4], LOW);
+    digitalWrite(SEGMENT_TO_PIN[5], LOW);
+    digitalWrite(SEGMENT_TO_PIN[6], HIGH);
     break;
 
   case 1:
-    digitalWrite(0, HIGH);
-    digitalWrite(1, LOW);
-    digitalWrite(2, LOW);
-    digitalWrite(3, HIGH);
-    digitalWrite(4, HIGH);
-    digitalWrite(5, HIGH);
-    digitalWrite(6, HIGH);
+    digitalWrite(SEGMENT_TO_PIN[0], HIGH);
+    digitalWrite(SEGMENT_TO_PIN[1], LOW);
+    digitalWrite(SEGMENT_TO_PIN[2], LOW);
+    digitalWrite(SEGMENT_TO_PIN[3], HIGH);
+    digitalWrite(SEGMENT_TO_PIN[4], HIGH);
+    digitalWrite(SEGMENT_TO_PIN[5], HIGH);
+    digitalWrite(SEGMENT_TO_PIN[6], HIGH);
     break;
 
   case 2:
-    digitalWrite(0, LOW);
-    digitalWrite(1, LOW);
-    digitalWrite(2, HIGH);
-    digitalWrite(3, LOW);
-    digitalWrite(4, LOW);
-    digitalWrite(5, HIGH);
-    digitalWrite(6, LOW);
+    digitalWrite(SEGMENT_TO_PIN[0], LOW);
+    digitalWrite(SEGMENT_TO_PIN[1], LOW);
+    digitalWrite(SEGMENT_TO_PIN[2], HIGH);
+    digitalWrite(SEGMENT_TO_PIN[3], LOW);
+    digitalWrite(SEGMENT_TO_PIN[4], LOW);
+    digitalWrite(SEGMENT_TO_PIN[5], HIGH);
+    digitalWrite(SEGMENT_TO_PIN[6], LOW);
     break;
 
   case 3:
-    digitalWrite(0, LOW);
-    digitalWrite(1, LOW);
-    digitalWrite(2, LOW);
-    digitalWrite(3, LOW);
-    digitalWrite(4, HIGH);
-    digitalWrite(5, HIGH);
-    digitalWrite(6, LOW);
+    digitalWrite(SEGMENT_TO_PIN[0], LOW);
+    digitalWrite(SEGMENT_TO_PIN[1], LOW);
+    digitalWrite(SEGMENT_TO_PIN[2], LOW);
+    digitalWrite(SEGMENT_TO_PIN[3], LOW);
+    digitalWrite(SEGMENT_TO_PIN[4], HIGH);
+    digitalWrite(SEGMENT_TO_PIN[5], HIGH);
+    digitalWrite(SEGMENT_TO_PIN[6], LOW);
     break;
 
   case 4:
-    digitalWrite(0, HIGH);
-    digitalWrite(1, LOW);
-    digitalWrite(2, LOW);
-    digitalWrite(3, HIGH);
-    digitalWrite(4, HIGH);
-    digitalWrite(6, LOW);
-    digitalWrite(5, LOW);
+    digitalWrite(SEGMENT_TO_PIN[0], HIGH);
+    digitalWrite(SEGMENT_TO_PIN[1], LOW);
+    digitalWrite(SEGMENT_TO_PIN[2], LOW);
+    digitalWrite(SEGMENT_TO_PIN[3], HIGH);
+    digitalWrite(SEGMENT_TO_PIN[4], HIGH);
+    digitalWrite(SEGMENT_TO_PIN[6], LOW);
+    digitalWrite(SEGMENT_TO_PIN[5], LOW);
     break;
 
   case 5:
-    digitalWrite(0, LOW);
-    digitalWrite(1, HIGH);
-    digitalWrite(2, LOW);
-    digitalWrite(3, LOW);
-    digitalWrite(4, HIGH);
-    digitalWrite(5, LOW);
-    digitalWrite(6, LOW);
+    digitalWrite(SEGMENT_TO_PIN[0], LOW);
+    digitalWrite(SEGMENT_TO_PIN[1], HIGH);
+    digitalWrite(SEGMENT_TO_PIN[2], LOW);
+    digitalWrite(SEGMENT_TO_PIN[3], LOW);
+    digitalWrite(SEGMENT_TO_PIN[4], HIGH);
+    digitalWrite(SEGMENT_TO_PIN[5], LOW);
+    digitalWrite(SEGMENT_TO_PIN[6], LOW);
     break;
 
   case 6:
-    digitalWrite(0, LOW);
-    digitalWrite(1, HIGH);
-    digitalWrite(2, LOW);
-    digitalWrite(3, LOW);
-    digitalWrite(4, LOW);
-    digitalWrite(5, LOW);
-    digitalWrite(6, LOW);
+    digitalWrite(SEGMENT_TO_PIN[0], LOW);
+    digitalWrite(SEGMENT_TO_PIN[1], HIGH);
+    digitalWrite(SEGMENT_TO_PIN[2], LOW);
+    digitalWrite(SEGMENT_TO_PIN[3], LOW);
+    digitalWrite(SEGMENT_TO_PIN[4], LOW);
+    digitalWrite(SEGMENT_TO_PIN[5], LOW);
+    digitalWrite(SEGMENT_TO_PIN[6], LOW);
     break;
 
   case 7:
-    digitalWrite(0, LOW);
-    digitalWrite(1, LOW);
-    digitalWrite(2, LOW);
-    digitalWrite(3, HIGH);
-    digitalWrite(4, HIGH);
-    digitalWrite(5, HIGH);
-    digitalWrite(6, HIGH);
+    digitalWrite(SEGMENT_TO_PIN[0], LOW);
+    digitalWrite(SEGMENT_TO_PIN[1], LOW);
+    digitalWrite(SEGMENT_TO_PIN[2], LOW);
+    digitalWrite(SEGMENT_TO_PIN[3], HIGH);
+    digitalWrite(SEGMENT_TO_PIN[4], HIGH);
+    digitalWrite(SEGMENT_TO_PIN[5], HIGH);
+    digitalWrite(SEGMENT_TO_PIN[6], HIGH);
     break;
 
   case 8:
-    digitalWrite(0, LOW);
-    digitalWrite(1, LOW);
-    digitalWrite(2, LOW);
-    digitalWrite(3, LOW);
-    digitalWrite(4, LOW);
-    digitalWrite(5, LOW);
-    digitalWrite(6, LOW);
+    digitalWrite(SEGMENT_TO_PIN[0], LOW);
+    digitalWrite(SEGMENT_TO_PIN[1], LOW);
+    digitalWrite(SEGMENT_TO_PIN[2], LOW);
+    digitalWrite(SEGMENT_TO_PIN[3], LOW);
+    digitalWrite(SEGMENT_TO_PIN[4], LOW);
+    digitalWrite(SEGMENT_TO_PIN[5], LOW);
+    digitalWrite(SEGMENT_TO_PIN[6], LOW);
     break;
 
   case 9:
-    digitalWrite(0, LOW);
-    digitalWrite(1, LOW);
-    digitalWrite(2, LOW);
-    digitalWrite(3, LOW);
-    digitalWrite(4, HIGH);
-    digitalWrite(5, LOW);
-    digitalWrite(6, LOW);
+    digitalWrite(SEGMENT_TO_PIN[0], LOW);
+    digitalWrite(SEGMENT_TO_PIN[1], LOW);
+    digitalWrite(SEGMENT_TO_PIN[2], LOW);
+    digitalWrite(SEGMENT_TO_PIN[3], LOW);
+    digitalWrite(SEGMENT_TO_PIN[4], HIGH);
+    digitalWrite(SEGMENT_TO_PIN[5], LOW);
+    digitalWrite(SEGMENT_TO_PIN[6], LOW);
     break;
   }
 }
@@ -123,8 +125,8 @@ void switchOnOrOffDigit(int index, bool on)
   else if (index > NUM_DIGITS -1)
     index = NUM_DIGITS -1;
 
-  const int DIGIT[] = { 11, 10, 9, 8 };
-  digitalWrite(DIGIT[index], on ? HIGH : LOW);
+  const int DIGIT_TO_PIN[] = { 13, 12, 11, 10 };
+  digitalWrite(DIGIT_TO_PIN[index], on ? HIGH : LOW);
 }
 
 void displayValue(int value)
@@ -133,6 +135,14 @@ void displayValue(int value)
     value = 0;
   else if (value > 9999)
     value =  9999;
+
+  if (value == 0)
+  {
+    setDigitValue(0);
+    switchOnDigit(NUM_DIGITS -1);
+    switchOffDigit(NUM_DIGITS -1);
+    return;
+  }
 
   uint8_t digits[NUM_DIGITS];
   memset(digits, 0, NUM_DIGITS);
